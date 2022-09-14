@@ -31,10 +31,10 @@ If you understand what you are doing, you may edit all files to your liking and 
 
 #### Examples of pages with our proposed format:
 
-	- Purple Pyramid: https://purple.anh.ink/
-	- Green Pyramid:  https://green.anh.ink/
-	- Yellow Pyramid: https://yellow.anh.ink/
-	- Orange Pyramid: https://orange.anh.ink/
-	- Red Pyramid): https://red.anh.ink/
+	##### Purple Pyramid: https://purple.anh.ink/
+	##### Green Pyramid:  https://green.anh.ink/
+	##### Yellow Pyramid: https://yellow.anh.ink/
+	##### Orange Pyramid: https://orange.anh.ink/
+	##### Red Pyramid): https://red.anh.ink/
 
 This page will interact with the pyramids using the MetaMask browser wallet, if you want it to be available in the MetaMask mobile offer too, your site must use `SSL encryption`, i.e. the address must start with `https`.
