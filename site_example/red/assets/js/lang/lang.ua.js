@@ -10,7 +10,7 @@ const pcol = {_1:'Пурпурна',_2:'Зелена',_3:'Жовта',_4:'Пом
 const lang = {
     // *************** Status *************** //
     unavailable:  ' ...',
-    waiting:      '<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Очікування ...</h4>',
+    waiting:      '<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; ГОТОВИЙ ДО РОБОТИ ...</h4>',
     basestatus:   vhtml.result1div.replace('&%result1', `<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Очікування ...</h4`),
     nologin:      vhtml.result1div.replace('&%result1', `<b><font color="red">
                                                          Ви не підключені до блокчейну:</font></b></br>&nbsp;</br>&nbsp;

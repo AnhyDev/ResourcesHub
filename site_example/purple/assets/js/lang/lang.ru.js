@@ -11,7 +11,7 @@ const lang = {
     // *************** Status *************** //
     unavailable:  ' ...',
     waiting:      '<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Ожидание ...</h4>',
-    basestatus:   vhtml.result1div.replace('&%result1', `<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Ожидание ...</h4>`),
+    basestatus:   vhtml.result1div.replace('&%result1', `<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; ГОТОВ К РАБОТЕ ...</h4>`),
     nologin:      vhtml.result1div.replace('&%result1', `<b><font color="red">
                                                          Вы не подключены к блокчейну:</font></b></br>&nbsp;</br>&nbsp;
                                                          <button class="button" onclick="anhydrite('login');">Подключиться к блокчейну</button></br>&nbsp;`),

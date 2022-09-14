@@ -10,8 +10,8 @@ const pcol = {_1:'Purple',_2:'Green',_3:'Yellow',_4:'Orange',_5:'Red',_6:'Testin
 const lang = {
     // *************** Status *************** //
     unavailable:  ' ...',
-    waiting:      '<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Wait ...</h4>',
-    basestatus:   vhtml.result1div.replace('&%result1', `<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; Wait ...</h4>`),
+    waiting:      '<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; READY FOR WORK ...</h4>',
+    basestatus:   vhtml.result1div.replace('&%result1', `<h4 style="margin: 10px" class="blink">&nbsp; &nbsp; READY FOR WORK ...</h4>`),
     nologin:      vhtml.result1div.replace('&%result1', `<b><font color="red">
                                                          You are not connected to the blockchain:</font></b></br>&nbsp;</br>&nbsp;
                                                          <button class="button" onclick="anhydrite('login');">Connect to the blockchain</button></br>&nbsp;`),
