@@ -28,8 +28,8 @@
 
 #### Примеры страниц с предложенным нами форматом:
 
-	- Purple Pyramid: https://purple.anh.ink/
-	- Green Pyramid:  https://green.anh.ink/
-	- Yellow Pyramid: https://yellow.anh.ink/
-	- Orange Pyramid: https://orange.anh.ink/
-	- Red Pyramid):   https://red.anh.ink/
+	- Purple Pyramid: [purple.anh.ink](https://purple.anh.ink/)
+	- Green Pyramid:  [green.anh.ink](https://green.anh.ink/)
+	- Yellow Pyramid: [yellow.anh.ink](https://yellow.anh.ink/)
+	- Orange Pyramid: [orange.anh.ink](https://orange.anh.ink/)
+	- Red Pyramid):   [red.anh.ink](https://red.anh.ink/)
