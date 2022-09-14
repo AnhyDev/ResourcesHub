@@ -12,11 +12,11 @@
 
 3. В файле `/assets/js/anh_example.js`, в строке 3, в переменную `prm_address` внесите адрес пирамиды:
 
-	* - Purple Pyramid: `0x15e584A1527EF01Dd0cF6C1D1d140cD5dE9D65cC` *
-	* - Green Pyramid:  `0xF855294bd9573698380dFC4e25054b2FA9c57E9B` *
-	* - Yellow Pyramid: `0x586b3EbCAd926867B3C6329Fa6b1D79A74B50249` *
-	* - Orange Pyramid: `0x0CB3765bC673Ecfc55Fa36Ced05aC83572313e21` *
-	* - Red Pyramid):   `0xD44DFd8230cF2A821F76C2B1F0679028ff7c084e` *
+	- Purple Pyramid: `0x15e584A1527EF01Dd0cF6C1D1d140cD5dE9D65cC`
+	- Green Pyramid:  `0xF855294bd9573698380dFC4e25054b2FA9c57E9B`
+	- Yellow Pyramid: `0x586b3EbCAd926867B3C6329Fa6b1D79A74B50249`
+	- Orange Pyramid: `0x0CB3765bC673Ecfc55Fa36Ced05aC83572313e21`
+	- Red Pyramid):   `0xD44DFd8230cF2A821F76C2B1F0679028ff7c084e`
 
 4. В файле `assets/js/anh_example.js`, в строке 4, в переменную `own_address` внесите адрес своего кошелька из которого покупали токен в этой пирамиде.
 
@@ -26,10 +26,10 @@
 
 Если вы понимаете что делаете, можете редактировать все файлы по своему вкусу и усмотрению. 
 
-** Примеры страниц с предложенным нами форматом: **
+#### Примеры страниц с предложенным нами форматом:
 
-	* - Purple Pyramid: https://purple.anh.ink/ *
-	* - Green Pyramid:  https://green.anh.ink/ *
-	* - Yellow Pyramid: https://yellow.anh.ink/ *
-	* - Orange Pyramid: https://orange.anh.ink/ *
-	* - Red Pyramid):   https://red.anh.ink/ *
+	- Purple Pyramid: https://purple.anh.ink/
+	- Green Pyramid:  https://green.anh.ink/
+	- Yellow Pyramid: https://yellow.anh.ink/
+	- Orange Pyramid: https://orange.anh.ink/
+	- Red Pyramid):   https://red.anh.ink/
