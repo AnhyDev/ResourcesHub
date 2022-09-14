@@ -31,10 +31,10 @@
 
 #### Примеры страниц с предложенным нами форматом:
 
-	##### Purple Pyramid: https://purple.anh.ink/
-	##### Green Pyramid:  https://green.anh.ink/
-	##### Yellow Pyramid: https://yellow.anh.ink/
-	##### Orange Pyramid: https://orange.anh.ink/
-	##### Red Pyramid):   https://red.anh.ink/
+##### Purple Pyramid: https://purple.anh.ink/
+##### Green Pyramid:  https://green.anh.ink/
+##### Yellow Pyramid: https://yellow.anh.ink/
+##### Orange Pyramid: https://orange.anh.ink/
+##### Red Pyramid):   https://red.anh.ink/
 	
 Эта страница будет взаимодействовать с пирамидами используя браузерный кошелёк MetaMask, если вы хотите, чтобы она также была доступна в мобильном предложении MetaMask, ваш сайт должен использовать `SSL шифрование`, то-есть адрес должен начинаться с `https`

@@ -31,11 +31,11 @@
 
 #### Приклади сторінок з запропонованим форматом:
 
-	##### Purple Pyramid: https://purple.anh.ink/
-	##### Green Pyramid:  https://green.anh.ink/
-	##### Yellow Pyramid: https://yellow.anh.ink/
-	##### Orange Pyramid: https://orange.anh.ink/
-	##### Red Pyramid):   https://red.anh.ink/
+##### Purple Pyramid: https://purple.anh.ink/
+##### Green Pyramid:  https://green.anh.ink/
+##### Yellow Pyramid: https://yellow.anh.ink/
+##### Orange Pyramid: https://orange.anh.ink/
+##### Red Pyramid):   https://red.anh.ink/
 
 
 Ця сторінка буде взаємодіяти з пірамідами використовуючи браузерний гаманець MetaMask, якщо ви хочете щоб вона також булл доступна в мобільному додатку MetaMask, ваш сайт повинен використовувати `SSL шифровання`, тобто адреса повинна починатися з `https`
