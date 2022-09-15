@@ -122,7 +122,6 @@ async function anhydrite(param) {
 	return result;
     }
 
-
 	async function buyTokenAddress() {
 	    let message = '&nbsp;';
 	    let position = 'status';
@@ -133,8 +132,12 @@ async function anhydrite(param) {
 			let address = own_address;
 			const contract = window.contract;
 			if (isAddress(address)) {
-			    let token = await minimalTokenAddress(contract, address);
-			    if (token !== 0 && await isBuyAllowed(contract, token)) {
+			    let token = await ownerTokens(contract, address);
+			    if (token > 0) {
+			        let is = await isBuyAllowed(contract, token);
+				if (!is) token = await minimalTokenAddress(contract, address);
+			    }
+			    if (token > 0 && await isBuyAllowed(contract, token)) {
 				loadHTML(position, lang.waiting);
 				let price = await getPrice(contract);
 				await contract.methods.buyTokenID(token).send({ from: account, value: price })
@@ -214,6 +217,12 @@ async function anhydrite(param) {
 	loadHTML(position, message);
     }
 
+    async function ownerTokens(contract, address) {
+	let token = 0;
+	let result = await contract.methods.ownerTokens(address).call(function(error, result){if (error !== null) {message = vhtml.errorsdiv.replace('&%result1', error.message);}});
+	if (result.length > 0) token = result[0];
+	return token;
+    }
 
     async function isBuyAllowed(contract, token) {
 	let result = false;

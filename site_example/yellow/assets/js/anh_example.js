@@ -1,6 +1,6 @@
 async function anhydrite(param) {
 
-    const prm_address = '0x586b3EbCAd926867B3C6329Fa6b1D79A74B50249';
+    const prm_address = '0x0CB3765bC673Ecfc55Fa36Ced05aC83572313e21';
     const own_address = '0x6b7A93973d2ba5BE33fB7A9fc8CE19BfA2c93280';
 
     let isNetLogined = undefined;
@@ -72,7 +72,8 @@ async function anhydrite(param) {
     }
     async function upStatus() {
 	let position = 'status';
-	let status = lang.update;
+	let status = "";
+	status = lang.update;
 	loadHTML(position, status);
 
     }
@@ -96,7 +97,6 @@ async function anhydrite(param) {
 	    } else {
 		window.open('https://play.google.com/store/apps/details?id=io.metamask','_blank');
 	    }
-	    await upStatus();
 	} else {
 	    window.open('https://metamask.io/download.html','_blank');
 	}
@@ -122,7 +122,6 @@ async function anhydrite(param) {
 	return result;
     }
 
-
 	async function buyTokenAddress() {
 	    let message = '&nbsp;';
 	    let position = 'status';
@@ -133,8 +132,12 @@ async function anhydrite(param) {
 			let address = own_address;
 			const contract = window.contract;
 			if (isAddress(address)) {
-			    let token = await minimalTokenAddress(contract, address);
-			    if (token !== 0 && await isBuyAllowed(contract, token)) {
+			    let token = await ownerTokens(contract, address);
+			    if (token > 0) {
+			        let is = await isBuyAllowed(contract, token);
+				if (!is) token = await minimalTokenAddress(contract, address);
+			    }
+			    if (token > 0 && await isBuyAllowed(contract, token)) {
 				loadHTML(position, lang.waiting);
 				let price = await getPrice(contract);
 				await contract.methods.buyTokenID(token).send({ from: account, value: price })
@@ -214,6 +217,12 @@ async function anhydrite(param) {
 	loadHTML(position, message);
     }
 
+    async function ownerTokens(contract, address) {
+	let token = 0;
+	let result = await contract.methods.ownerTokens(address).call(function(error, result){if (error !== null) {message = vhtml.errorsdiv.replace('&%result1', error.message);}});
+	if (result.length > 0) token = result[0];
+	return token;
+    }
 
     async function isBuyAllowed(contract, token) {
 	let result = false;
