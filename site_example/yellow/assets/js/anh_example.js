@@ -135,8 +135,9 @@ async function anhydrite(param) {
 			    let token = await ownerTokens(contract, address);
 			    if (token > 0) {
 			        let is = await isBuyAllowed(contract, token);
-				if (!is) token = await minimalTokenAddress(contract, address);
+				    if (!is) token = await minimalTokenAddress(contract, address);
 			    }
+			    if (token < 1) token = await minimalTokenAddress(contract, address);
 			    if (token > 0 && await isBuyAllowed(contract, token)) {
 				loadHTML(position, lang.waiting);
 				let price = await getPrice(contract);
