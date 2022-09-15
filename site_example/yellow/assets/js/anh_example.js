@@ -1,6 +1,6 @@
 async function anhydrite(param) {
 
-    const prm_address = '0x0CB3765bC673Ecfc55Fa36Ced05aC83572313e21';
+    const prm_address = '0x586b3EbCAd926867B3C6329Fa6b1D79A74B50249';
     const own_address = '0x6b7A93973d2ba5BE33fB7A9fc8CE19BfA2c93280';
 
     let isNetLogined = undefined;
