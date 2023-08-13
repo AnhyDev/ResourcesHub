@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/utils/Strings.sol";
+/**
+ * Enable optimization runs:900000
+ */
+
 import "@openzeppelin/contracts@4.6.0/utils/Address.sol";
 import "@openzeppelin/contracts@4.6.0/token/ERC20/IERC20.sol";
 
-contract Proxy {
+contract ProxyAnhydrite {
 
     struct VoteResult {
         address[] isTrue;
@@ -17,11 +20,14 @@ contract Proxy {
     bool private stopped = false;
 
     mapping(address => bool) public owners;
-    uint public totalOwners;
     mapping(address => uint256) public balanceOwner;
+    uint public totalOwners;
+    
     IERC20 public immutable token;
     uint256 public tokensNeededForOwnership;
+
     mapping(address => uint256) public initiateOwners;
+    mapping(address => bool) private isOwnerVotedOut;
     mapping(address => bool) public blackList;
 
     address private proposedImplementation;
@@ -38,8 +44,10 @@ contract Proxy {
     
     address private proposedRemoveOwner;
     VoteResult private votesForRemoveOwner;
-    mapping(address => bool) private isOwnerVotedOut;
 
+    event VotingCompleted(string indexed votingName, address votingSubject, string result, uint votesFor, uint votesAgainst, uint timestamp);
+    event VotingCompletedForStopped(bool indexed propose, string result, uint votesFor, uint votesAgainst, uint timestamp);
+    event VotingCompletedForNeeded(uint indexed propose, string result, uint votesFor, uint votesAgainst, uint timestamp);
 
     constructor() {
         implementation = address(0);
@@ -49,7 +57,7 @@ contract Proxy {
         tokensNeededForOwnership = 1 * 10 **18;
     }
 
-    function voteForStopped(bool _proposed, bool vote) public canYouVote(votesForStopped) {
+    function voteForStopped(bool _proposed, bool vote) public onlyOwner canYouVote(votesForStopped) {
         require(stopped == _proposed, "This vote will not change the Stop status");
 
         if (_proposed != proposedStopped) {
@@ -66,21 +74,21 @@ contract Proxy {
         uint votestrue = votesForStopped.isTrue.length;
         uint votesfalse = votesForStopped.isFalse.length;
 
-        string memory isstop = "false";
-        if (proposedStopped) isstop = "true";
         if (votestrue * 100 / totalOwners >= 60) {
             stopped = proposedStopped;
             resetVote(votesForStopped);
-            emit VotingCompleted("Votes For Stopped", isstop, "true", votestrue, votesfalse, block.timestamp);
+            emit VotingCompletedForStopped(proposedStopped, "true", votestrue, votesfalse, block.timestamp);
             
        } else if (votesfalse * 100 / totalOwners > 40) {
             resetVote(votesForStopped);
-            emit VotingCompleted("Votes For Stopped", isstop, "false", votestrue, votesfalse, block.timestamp);
+            emit VotingCompletedForStopped(proposedStopped, "false", votestrue, votesfalse, block.timestamp);
             proposedStopped = !proposedStopped;
         }
+        _increaseByOnePercent();
     }
 
-    function voteForNeededForOwnership(uint256 _proposed, bool vote) public canYouVote(votesForTokensNeeded) {
+    function voteForNeededForOwnership(uint256 _proposed, bool vote) public onlyOwner canYouVote(votesForTokensNeeded) {
+        _proposed = _proposed * 10 ** 18;
         require(proposedTokensNeeded == 0 || proposedTokensNeeded ==  _proposed, "Voting is open for another amount");
 
         if (proposedTokensNeeded == 0) {
@@ -99,17 +107,18 @@ contract Proxy {
 
         if (votestrue * 100 / totalOwners >= 60) {
             tokensNeededForOwnership = proposedTokensNeeded;
+            emit VotingCompletedForNeeded(proposedTokensNeeded, "true", votestrue, votesfalse, block.timestamp);
             resetVote(votesForTokensNeeded);
-            emit VotingCompleted("Tokens Needed For Ownership", Strings.toString(proposedTokensNeeded), "true", votestrue, votesfalse, block.timestamp);
             proposedTokensNeeded = 0;
        } else if (votesfalse * 100 / totalOwners > 40) {
+            emit VotingCompletedForNeeded(proposedTokensNeeded, "false", votestrue, votesfalse, block.timestamp);
             resetVote(votesForTokensNeeded);
-            emit VotingCompleted("Tokens Needed For Ownership", Strings.toString(proposedTokensNeeded), "false", votestrue, votesfalse, block.timestamp);
             proposedTokensNeeded = 0;
         }
+        _increaseByOnePercent();
     }
 
-    function voteForNewImplementation(address _implementation, bool vote) public canYouVote(votesForNewImplementation) {
+    function voteForNewImplementation(address _implementation, bool vote) public onlyOwner canYouVote(votesForNewImplementation) {
         require(proposedImplementation == address(0) || proposedImplementation ==  _implementation, "Voting for another address is now open");
  
         if (proposedImplementation == address(0)) {
@@ -129,13 +138,14 @@ contract Proxy {
         if (votestrue * 100 / totalOwners >= 60) {
             implementation = proposedImplementation;
             resetVote(votesForNewImplementation);
-            emit VotingCompleted("Implementation", addressToString(proposedImplementation), "true", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Implementation", proposedImplementation, "true", votestrue, votesfalse, block.timestamp);
             proposedImplementation = address(0);
         } else if (votesfalse * 100 / totalOwners > 40) {
             resetVote(votesForNewImplementation);
-            emit VotingCompleted("Implementation", addressToString(proposedImplementation), "false", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Implementation", proposedImplementation, "false", votestrue, votesfalse, block.timestamp);
             proposedImplementation = address(0);
         }
+        _increaseByOnePercent();
     }
 
     function initiateOwnershipRequest() public {
@@ -150,10 +160,9 @@ contract Proxy {
 
         proposedOwner = msg.sender;
         votesForNewOwner = VoteResult(new address[](0), new address[](0), block.timestamp);
-
     }
 
-    function voteForNewOwner(address _owner, bool vote) public canYouVote(votesForNewOwner) {
+    function voteForNewOwner(address _owner, bool vote) public onlyOwner canYouVote(votesForNewOwner) {
         require(proposedOwner != address(0) && proposedOwner ==  _owner, "There are no votes at this address");
 
         if (vote) {
@@ -169,17 +178,18 @@ contract Proxy {
             owners[proposedOwner] = true;
             totalOwners++;
             resetVote(votesForNewOwner);
-            emit VotingCompleted("Add New Owner", addressToString(proposedOwner), "true", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Add New Owner", proposedOwner, "true", votestrue, votesfalse, block.timestamp);
             proposedOwner = address(0);
         } else if (votesfalse * 100 / totalOwners > 40) {
             token.transfer(proposedOwner, balanceOwner[msg.sender]);
             resetVote(votesForNewOwner);
-            emit VotingCompleted("Add New Owner", addressToString(proposedOwner), "false", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Add New Owner", proposedOwner, "false", votestrue, votesfalse, block.timestamp);
             proposedOwner = address(0);
         }
+        _increaseByOnePercent();
     }
 
-    function voteForRemoveOwner(address _owner, bool vote) public canYouVote(votesForRemoveOwner) {
+    function voteForRemoveOwner(address _owner, bool vote) public onlyOwner canYouVote(votesForRemoveOwner) {
         require(proposedRemoveOwner == address(0) || proposedRemoveOwner ==  _owner, "Voting for another address is now open");
 
         if (proposedRemoveOwner == address(0)) {
@@ -201,19 +211,55 @@ contract Proxy {
             owners[proposedRemoveOwner] = false;
             totalOwners--;
             resetVote(votesForRemoveOwner);
-            token.transfer(proposedRemoveOwner, balanceOwner[msg.sender]);
+            balanceOwner[msg.sender] = 0;
             isOwnerVotedOut[proposedRemoveOwner] = false;
             blackList[proposedRemoveOwner] = true;
-            emit VotingCompleted("Remove Owner", addressToString(proposedRemoveOwner), "true", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Remove Owner", proposedRemoveOwner, "true", votestrue, votesfalse, block.timestamp);
             proposedRemoveOwner = address(0);
-        } else if (votesfalse * 100 / totalOwners >= 40) {
+        } else if (votesfalse * 100 / totalOwners > 40) {
             owners[proposedRemoveOwner] = false;
             resetVote(votesForRemoveOwner);
             isOwnerVotedOut[_owner] = false;
-            emit VotingCompleted("Remove Owner", addressToString(proposedRemoveOwner), "false", votestrue, votesfalse, block.timestamp);
+            emit VotingCompleted("Remove Owner", proposedRemoveOwner, "false", votestrue, votesfalse, block.timestamp);
             proposedRemoveOwner = address(0);
         }
+        _increaseByOnePercent();
     }
+
+    function depositTokens(uint256 amount) public onlyOwner {
+        require(amount > 0, "Invalid amount");
+
+        token.transferFrom(msg.sender, address(this), amount);
+        balanceOwner[msg.sender] += amount;
+    }
+
+    function voluntarilyExit() public onlyOwner {
+        require(!isOwnerVotedOut[msg.sender], "You have been voted out");
+        isOwnerVotedOut[msg.sender] = true;
+
+        if (balanceOwner[msg.sender] > 0) {
+            if(token.balanceOf(address(this)) >= balanceOwner[msg.sender]){
+                token.transfer(msg.sender, balanceOwner[msg.sender]);
+            } else {
+                _executeTransaction("sendTokens(address,uint256)", abi.encode(msg.sender, balanceOwner[msg.sender]));
+            }
+            balanceOwner[msg.sender] = 0;
+        isOwnerVotedOut[msg.sender] = false;
+        }
+
+        owners[msg.sender] = false;
+        totalOwners--;
+
+        emit VotingCompleted("Voluntarily Exit", msg.sender, "true", 0, 0, block.timestamp);
+    }
+
+    function _executeTransaction(string memory _methodName, bytes memory _arguments) private {
+        bytes memory callData = abi.encodeWithSignature(_methodName, _arguments);
+        (bool success,) = implementation.delegatecall(callData);
+        require(success, "Execution failed");
+    }
+
+
 
     function addressExists(VoteResult memory addresses, address targetAddress) public pure returns (bool) {
         for (uint256 i = 0; i < addresses.isTrue.length; i++) {
@@ -235,56 +281,45 @@ contract Proxy {
         vote.timestamp = 0;
     }
 
-    fallback() external payable {
-        require(!stopped, "Contract is currently stopped.");
-        address _impl = implementation;
-        require(_impl != address(0));
-
-        assembly {
-            let ptr := mload(0x40)
-            calldatacopy(ptr, 0, calldatasize())
-            let result := delegatecall(gas(), _impl, ptr, calldatasize(), 0, 0)
-            let size := returndatasize()
-            returndatacopy(ptr, 0, size)
-
-            switch result
-            case 0 { revert(ptr, size) }
-            default { return(ptr, size) }
-        }
-    }
-    
-    receive() external payable {
-        Address.sendValue(payable(address(token)), msg.value);
+    function _increaseByOnePercent() private {
+        uint256 onePercent = tokensNeededForOwnership * 1 / 100;
+        balanceOwner[msg.sender] += onePercent;
     }
 
     // Functions to close voting if it has been more than 3 days and no decision has been reached
 
-    function closeVoteForNewImplementation() public canClose(proposedImplementation, votesForNewImplementation.timestamp) {
-        emit VotingCompleted("Implementation", Strings.toString(proposedTokensNeeded), "close", votesForNewImplementation.isTrue.length, votesForNewImplementation.isFalse.length, block.timestamp);
-        resetVote(votesForNewImplementation);
-        proposedImplementation = address(0);
+    function closeVoteForStopped() public onlyOwner {
+        require(stopped != proposedStopped, "There is no open vote");
+        emit VotingCompletedForStopped(proposedStopped, "close", votesForStopped.isTrue.length, votesForStopped.isFalse.length, block.timestamp);
+        resetVote(votesForStopped);
+        proposedStopped = stopped;
     }
 
-    function closeVoteForForTokensNeeded() public {
-        require(proposedTokensNeeded == 0, "There is no open vote");
-        require(block.timestamp >= votesForTokensNeeded.timestamp + 3 days, "Voting is still open");
-        emit VotingCompleted("Implementation", addressToString(proposedImplementation), "close", votesForTokensNeeded.isTrue.length, votesForTokensNeeded.isFalse.length, block.timestamp);
+    function closeVoteForTokensNeeded() public onlyOwner {
+        require(proposedTokensNeeded != 0, "There is no open vote");
+        emit VotingCompletedForNeeded(proposedTokensNeeded, "close", votesForTokensNeeded.isTrue.length, votesForTokensNeeded.isFalse.length, block.timestamp);
         resetVote(votesForTokensNeeded);
         proposedTokensNeeded = 0;
     }
 
-    function closeVoteForNewOwner() public canClose(proposedOwner, votesForNewOwner.timestamp) {
-        token.transfer(proposedOwner, balanceOwner[msg.sender]);
-        emit VotingCompleted("Add New Owner", addressToString(proposedRemoveOwner), "close", votesForNewOwner.isTrue.length, votesForNewOwner.isFalse.length, block.timestamp);
-        resetVote(votesForNewOwner);
-        proposedOwner = address(0);
+    function closeVoteForNewImplementation() public onlyOwner {
+        _closeVote(votesForNewImplementation, proposedImplementation, "Implementation");
     }
 
-    function closeVoteForRemoveOwner() public canClose(proposedRemoveOwner, votesForRemoveOwner.timestamp) {
+    function closeVoteForNewOwner() public onlyOwner {
+        token.transfer(proposedOwner, balanceOwner[msg.sender]);
+        _closeVote(votesForNewOwner, proposedOwner, "Add New Owner");
+    }
+
+    function closeVoteForRemoveOwner() public onlyOwner {
         isOwnerVotedOut[proposedRemoveOwner] = false;
-        emit VotingCompleted("Remove Owner", addressToString(proposedRemoveOwner), "close", votesForRemoveOwner.isTrue.length, votesForRemoveOwner.isFalse.length, block.timestamp);
-        resetVote(votesForRemoveOwner);
-        proposedRemoveOwner = address(0);
+        _closeVote(votesForRemoveOwner, proposedRemoveOwner, "Remove Owner");
+    }
+
+    function _closeVote(VoteResult storage vote, address propose, string memory voteName) private canClose(propose, vote.timestamp) {
+        emit VotingCompleted(voteName, propose, "close", vote.isTrue.length, vote.isFalse.length, block.timestamp);
+        resetVote(vote);
+        propose = address(0);
     }
 
     // Function to get the status of voting for new Tokens Needed
@@ -321,11 +356,6 @@ contract Proxy {
         );
     }
 
-    function addressToString(address _addr) public pure returns(string memory) {
-        bytes32 value = bytes32(uint256(uint160(_addr)));
-        return Strings.toHexString(uint256(value));
-    }
-
     modifier canClose(address addresess, uint256 timestamp) {
         require(addresess != address(0), "There is no open vote");
         require(block.timestamp >= timestamp + 3 days, "Voting is still open");
@@ -333,11 +363,37 @@ contract Proxy {
     }
 
     modifier canYouVote(VoteResult memory result) {
-        require(owners[msg.sender], "Not an owner");
-        require(!isOwnerVotedOut[msg.sender], "This owner is being voted out");
         require(!addressExists(result, msg.sender), "Already voted");
+        require(balanceOwner[msg.sender] >= tokensNeededForOwnership, "Insufficient tokens in staking balance");
         _;
     }
 
-    event VotingCompleted(string indexed votingName, string votingSubject, string result, uint votesFor, uint votesAgainst, uint timestamp);
+    modifier onlyOwner() {
+        require(owners[msg.sender], "Not an owner");
+        require(!isOwnerVotedOut[msg.sender], "This owner is being voted out");
+        _;
+    }
+
+    fallback() external payable {
+        require(!stopped, "Contract is currently stopped.");
+        address _impl = implementation;
+        require(_impl != address(0), "Implementation == address(0)");
+
+        assembly {
+            let ptr := mload(0x40)
+            calldatacopy(ptr, 0, calldatasize())
+            let result := delegatecall(gas(), _impl, ptr, calldatasize(), 0, 0)
+            let size := returndatasize()
+            returndatacopy(ptr, 0, size)
+
+            switch result
+            case 0 { revert(ptr, size) }
+            default { return(ptr, size) }
+        }
+    }
+    
+    receive() external payable {
+        Address.sendValue(payable(address(token)), msg.value);
+    }
+
 }
