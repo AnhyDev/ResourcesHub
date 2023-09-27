@@ -1,4 +1,10 @@
-# Anhydrite
+# Deprecated Anhydrite
 
-###### Anhydrite is an Italian-Ukrainian project that brings web3 technology to the world of games, With all the possibilities that Anhydrite provides, you can implement crypto in your game project and take it to a whole different level.
+---
+### 🚨 Attention 🚨
+**This version of the token is obsolete and is no longer supported.**
 
+👉 We strongly recommend using the latest release available in the [updated repository](https://github.com/Anhydr1te/AnhydriteGamingEcosystem). Please follow the link to access the most current version and additional information.
+
+Thank you for your understanding and cooperation!
+---
