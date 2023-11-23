@@ -1,0 +1,27 @@
+magic_wand:
+  name: "&bMagic Wand"
+  lore:
+    - "&7This is a magic wand."
+    - "&7It can perform magical feats."
+    - "&7Use it wisely."
+
+# A copy of the main item with the first line of lore changed
+magic_wand_1:
+  copy: magic_wand
+  lines:
+    1: "&cEnhanced Magic Wand"
+
+# Another copy with changes in the first and third lines of the lore
+magic_wand_2:
+  copy: magic_wand
+  lines:
+    1: "&dAdvanced Magic Wand"
+    3: "&dIt holds immense power."
+
+eternal_sword:
+  name: "&cEternal Sword"
+  lore:
+    - "&7A legendary sword that never dulls."
+    - "&7Said to be forged from a fallen star."
+    - "&7Its blade cuts through darkness."
+  
