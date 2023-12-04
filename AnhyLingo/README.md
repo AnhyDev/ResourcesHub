@@ -166,23 +166,21 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 
 ### Automatic Item Renaming:
 
-1.  *   Renaming the name and lore of custom items to the player's language during the player's interaction with the item in the inventory.
-    *   Automatic setting of the NBT tag with the language during renaming to prevent unnecessary renamings.
-    *   The item is not modified in cases where the language of the item matches the language of the player, or when more than one player is looking at the inventory simultaneously.
+   *   Renaming the name and lore of custom items to the player's language during the player's interaction with the item in the inventory.
+   *   Automatic setting of the NBT tag with the language during renaming to prevent unnecessary renamings.
+   *   The item is not modified in cases where the language of the item matches the language of the player, or when more than one player is looking at the inventory simultaneously.
 
 > For the **AnhyLingo** plugin to track and rename certain items, it is necessary to add a special NBT tag `ItemLingo`. This tag should contain a string value that corresponds to the key in the language file.
 > 
 > #### Adding an NBT Tag to an Item
 > 
->  *    *   Command for Adding Tag, example:
->         
+>    *   Command for Adding Tag, example:
 >         
 >         *   `/lingo nbt set ItemLingo string:magic_wand`
 >             *   This command adds the NBT tag ItemLingo with the string value `magic_wand` to the item in the player's hand.
 >             *   The value `magic_wand` corresponds to the key that must be in the language file.
->     *   Using Other Plugins:
->         
->         
+>    *   Using Other Plugins:
+>      
 >         *   Administrators can also use the functionality of other plugins to add this NBT tag to items.
 >         *   It is important that the NBT tag has the name `ItemLingo` and a string value that corresponds to the key from the language file.
 > 
