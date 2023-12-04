@@ -14,10 +14,10 @@ We recommend always using the latest version of the plugin for optimal performan
 
 ## Support
 
-If you encounter any issues or have questions about using the plugin, please visit the [Issues section](link-to-your-GitHub-repository-issues) of our GitHub repository.
+If you encounter any issues or have questions about using the plugin, please visit the [Issues section](https://github.com/AnhyDev/AnhyLingo/discussions/3) of our GitHub repository.
 
 ## License
 
-AnhyLingo is distributed under the [MIT License](link-to-your-GitHub-repository-license).
+AnhyLingo is distributed under the [MIT License](https://github.com/AnhyDev/AnhyLingo/blob/main/LICENSE).
 
 Thank you for using AnhyLingo!
