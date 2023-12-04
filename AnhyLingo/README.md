@@ -139,10 +139,8 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
   
   
     ##### Uploading other files
-
     *   (with permission anhylingo.file.other)
     *   `/lingo fo (fother) link_to_file directory true|false`:
-
     *   Uploading any files into the `directory` within the server plugins folder.
     *   Important: Uploading is only possible in the directories defined as allowed in the plugin configuration file (`allowed_directories`).
     *   If a subdirectory within the allowed directory does not exist, it will be automatically created during the execution of the command.
@@ -153,9 +151,7 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 1.  #### Deleting files
 
     *   #### Deleting a file
-
     *   (with permission anhylingo.file.other)`/lingo fd (fdel) directory file_name`
-
     *   Important: Deleting is only possible in the directories defined as allowed in the plugin configuration file (`allowed_del_directories`).
     *   `directory`: File path.
     *   `file_name`: File name
@@ -163,9 +159,7 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 1.  #### File view
 
     *   #### View folder contents
-
     *   (with permission anhylingo.file.view)`/lingo dir [directory]`
-
     *   Displays the contents of the `directory` folder located in the server plugins directory.
     *   If `[directory]` is set to 0, it will show the contents of the `./plugins/` folder.
 
@@ -180,7 +174,7 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 > 
 > #### Adding an NBT Tag to an Item
 > 
-> *   *   Command for Adding Tag, example:
+>  *    *   Command for Adding Tag, example:
 >         
 >         
 >         *   `/lingo nbt set ItemLingo string:magic_wand`
