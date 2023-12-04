@@ -127,7 +127,7 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 
 1.  #### File Uploading
 
-    2.  #### File YAML AnhyLingo uploading
+ 2.  #### File YAML AnhyLingo uploading
 
     *   (with permission anhylingo.file.lingo)
     *   `/lingo fl (flingo) link_to_file folder true|false`:
@@ -137,7 +137,7 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
     *   `true|false`: Parameter to determine the possibility of overwriting the file.
     *   File requirements: valid yml format, file name corresponds to the pattern `xxx_[language_code].yml`.
       
-    2.  #### File uploading
+ 2.  #### Upload other files
 
     *   (with permission anhylingo.file.other)
     *   `/lingo fo (fother) link_to_file directory true|false`:
