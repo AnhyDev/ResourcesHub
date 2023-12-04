@@ -174,12 +174,13 @@ In conclusion, **AnhyLingo** transcends the typical boundaries of language in 
 > 
 > #### Adding an NBT Tag to an Item
 > 
->    *   Command for Adding Tag, example:
+>    *  Command for Adding Tag, example:
 >         
 >         *   `/lingo nbt set ItemLingo string:magic_wand`
 >             *   This command adds the NBT tag ItemLingo with the string value `magic_wand` to the item in the player's hand.
 >             *   The value `magic_wand` corresponds to the key that must be in the language file.
->    *   Using Other Plugins:
+>
+>    *  Using Other Plugins:
 >      
 >         *   Administrators can also use the functionality of other plugins to add this NBT tag to items.
 >         *   It is important that the NBT tag has the name `ItemLingo` and a string value that corresponds to the key from the language file.
