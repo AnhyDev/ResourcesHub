@@ -1,0 +1,70 @@
+#
+# ░█████╗░███╗░░██╗██╗░░██╗██╗░░░██╗██╗░░░░░██╗███╗░░██╗░██████╗░░█████╗░
+# ██╔══██╗████╗░██║██║░░██║╚██╗░██╔╝██║░░░░░██║████╗░██║██╔════╝░██╔══██╗
+# ███████║██╔██╗██║███████║░╚████╔╝░██║░░░░░██║██╔██╗██║██║░░██╗░██║░░██║
+# ██╔══██║██║╚████║██╔══██║░░╚██╔╝░░██║░░░░░██║██║╚████║██║░░╚██╗██║░░██║
+# ██║░░██║██║░╚███║██║░░██║░░░██║░░░███████╗██║██║░╚███║╚██████╔╝╚█████╔╝
+# ╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░░╚════╝░
+#
+# Vidinės sistemos pranešimai AnhyLingo įskiepio
+#
+# 1 Bendra
+lingo_err_not_have_permission: "Jūs neturite leidimo naudoti šią komandą."
+lingo_err_not_alloved_config: "Komanda nėra leidžiama konfigūracijos nustatymuose."
+lingo_err_command_format: "Komandos formatas: "
+#
+# 2 Konfigūracijų įkėlimas
+lingo_err_folder_is_empty: "Aplankas tuščias arba įvyko klaida jį skaitant."
+lingo_err_folder_is_notexist: "Aplankas neegzistuoja arba tai nėra aplankas."
+lingo_err_reloading_configuration: "Klaida perkraunant konfigūraciją."
+lingo_created_default_configuration: "Sukurta numatytoji konfigūracija."
+lingo_configuration_reloaded: "Konfigūracija perkrauta."
+lingo_language_reloaded: "Kalbos failai ir konfigūracija perkrauti."
+#
+# 3 Failų šalinimas
+lingo_err_not_allowed_to_delete: "Draudžiama šalinti failus iš šio aplanko: "
+lingo_err_folder_does_not_exist: "Aplankas neegzistuoja: "
+lingo_file_deleted_successfully: "Failas sėkmingai pašalintas: "
+lingo_err_not_allowed_delete_from_this_folder: "Nepavyko pašalinti failo: "
+lingo_err_file_not_found: "Failas nerastas: "
+lingo_err_error_deleting_file: "Klaida šalinant failą: "
+#
+# 4 Įvairių failų įkėlimas
+lingo_err_uploading_not_allowed: "Draudžiama įkelti į šį aplanką: "
+lingo_err_failed_create_folder: "Nepavyko sukurti aplanko: "
+lingo_err_error_loading_file: "Klaida įkeliant failą: "
+lingo_err_file_already_exists: "Failas jau egzistuoja: "
+lingo_err_error_in_URL: "Klaida URL: "
+lingo_file_uploaded_successfully: "Failas sėkmingai įkeltas: "
+lingo_file_updated_successfully: "Failas sėkmingai atnaujintas: "
+#
+# 5 ItemLingo kalbos failų įkėlimas
+lingo_err_filename_not_pattern: "Failo pavadinimas neatitinka šablono: "
+lingo_err_error_parsing_YAML: "Klaida analizuojant YAML: "
+lingo_err_key_not_string: "Raktas nėra eilutė: "
+lingo_err_failed_create_ItemLang_key: "Nepavyko sukurti ItemLang rakto "
+lingo_err_items_section_is_missing_file: "Failo 'items' sekcija trūksta. "
+lingo_err_unknown_directory_type: "Nežinomas aplanko tipas: "
+#
+# 6 Bendra failų operacijoms
+lingo_file_operation_initiated: "Pradėta failo operacija aplankui: "
+lingo_file_show_folder_contents: "Spustelėkite, kad pamatytumėte aplanko turinį: "
+lingo_file_folder_contents: "Aplanko turinys "
+#
+# 7 Kalbos komandos
+lingo_err_language_code_2letters: "Kalbos kodas turi būti 2 raidės. "
+lingo_err_invalid_language_code: "Netinkamas kalbos kodas: "
+lingo_you_language: "Pasirinktų kalbų sąrašas: "
+lingo_you_have_not_set_language: "Jūs nepasirinkote jokios kalbos, naudojami Minecraft nustatymai "
+lingo_cleared_the_language: "Jūs išvalėte kalbų sąrašą, bus naudojami Minecraft nustatymai "
+lingo_err_no_item_data_found: "Nerasta duomenų nurodytai kalbai ir raktui. "
+lingo_keys_for_language: "Raktai kalbai "
+lingo_language_is_selected: "Pasirinkote šias kalbas: "
+#
+# 8 NBT
+lingo_NBT_value_set: "NBT vertė nustatyta. "
+lingo_err_item_no_NBT_tags: "Jūsų daiktas neturi NBT žymių. "
+lingo_NBT_keys_for_item: "Jūsų daikto NBT raktai: "
+lingo_err_NBT_tag_not_exist: "NBT žymė su tokiu raktu neegzistuoja. "
+lingo_err_command_only_player: "Šią komandą gali vykdyti tik žaidėjas. "
+lingo_err_have_nothing_hand: "Jūsų rankoje nieko nėra. "

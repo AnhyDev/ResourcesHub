@@ -1,0 +1,70 @@
+#
+# ░█████╗░███╗░░██╗██╗░░██╗██╗░░░██╗██╗░░░░░██╗███╗░░██╗░██████╗░░█████╗░
+# ██╔══██╗████╗░██║██║░░██║╚██╗░██╔╝██║░░░░░██║████╗░██║██╔════╝░██╔══██╗
+# ███████║██╔██╗██║███████║░╚████╔╝░██║░░░░░██║██╔██╗██║██║░░██╗░██║░░██║
+# ██╔══██║██║╚████║██╔══██║░░╚██╔╝░░██║░░░░░██║██║╚████║██║░░╚██╗██║░░██║
+# ██║░░██║██║░╚███║██║░░██║░░░██║░░░███████╗██║██║░╚███║╚██████╔╝╚█████╔╝
+# ╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░░╚════╝░
+#
+# AnhyLingo spraudņa iekšējās sistēmas ziņojumi
+#
+# 1 Vispārīgi
+lingo_err_not_have_permission: "Jums nav atļaujas izmantot šo komandu."
+lingo_err_not_alloved_config: "Komanda nav atļauta konfigurācijas iestatījumos."
+lingo_err_command_format: "Komandas formāts: "
+#
+# 2 Konfigurāciju ielāde
+lingo_err_folder_is_empty: "Mape ir tukša vai lasot notika kļūda."
+lingo_err_folder_is_notexist: "Mape neeksistē vai tā nav mape."
+lingo_err_reloading_configuration: "Kļūda, pārlādējot konfigurāciju."
+lingo_created_default_configuration: "Izveidota noklusējuma konfigurācija."
+lingo_configuration_reloaded: "Konfigurācija pārlādēta."
+lingo_language_reloaded: "Valodas faili un konfigurācija pārlādēti."
+#
+# 3 Failu dzēšana
+lingo_err_not_allowed_to_delete: "Nav atļauts dzēst failus no šīs mapes: "
+lingo_err_folder_does_not_exist: "Mape neeksistē: "
+lingo_file_deleted_successfully: "Fails veiksmīgi izdzēsts: "
+lingo_err_not_allowed_delete_from_this_folder: "Neizdevās izdzēst failu: "
+lingo_err_file_not_found: "Fails nav atrasts: "
+lingo_err_error_deleting_file: "Kļūda, dzēšot failu: "
+#
+# 4 Dažādu failu augšupielāde
+lingo_err_uploading_not_allowed: "Nav atļauts augšupielādēt šajā mapē: "
+lingo_err_failed_create_folder: "Neizdevās izveidot mapi: "
+lingo_err_error_loading_file: "Kļūda, ielādējot failu: "
+lingo_err_file_already_exists: "Fails jau eksistē: "
+lingo_err_error_in_URL: "Kļūda URL: "
+lingo_file_uploaded_successfully: "Fails veiksmīgi augšupielādēts: "
+lingo_file_updated_successfully: "Fails veiksmīgi atjaunināts: "
+#
+# 5 ItemLingo valodas failu ielāde
+lingo_err_filename_not_pattern: "Faila nosaukums neatbilst paraugam: "
+lingo_err_error_parsing_YAML: "Kļūda, analizējot YAML: "
+lingo_err_key_not_string: "Atslēga nav virkne: "
+lingo_err_failed_create_ItemLang_key: "Neizdevās izveidot ItemLang atslēgu "
+lingo_err_items_section_is_missing_file: "Failā trūkst 'items' sadaļas. "
+lingo_err_unknown_directory_type: "Nezināms mapes tips: "
+#
+# 6 Vispārīgi failu operācijām
+lingo_file_operation_initiated: "Sākta faila operācija mapei: "
+lingo_file_show_folder_contents: "Noklikšķiniet, lai redzētu mapes saturu: "
+lingo_file_folder_contents: "Mapes saturs "
+
+# 7 Valodas komandas
+lingo_err_language_code_2letters: "Valodas kods jābūt 2 burtiem."
+lingo_err_invalid_language_code: "Nederīgs valodas kods: "
+lingo_you_language: "Izvēlēto valodu saraksts: "
+lingo_you_have_not_set_language: "Jūs neesat izvēlējies nevienu valodu, tiek izmantoti Minecraft iestatījumi "
+lingo_cleared_the_language: "Jūs esat izdzēsis valodu sarakstu, tiks izmantoti Minecraft iestatījumi "
+lingo_err_no_item_data_found: "Nav atrasti dati norādītajai valodai un atslēgai. "
+lingo_keys_for_language: "Atslēgas valodai "
+lingo_language_is_selected: "Jūs esat izvēlējušies šādas valodas: "
+#
+# 8 NBT
+lingo_NBT_value_set: "NBT vērtība ir iestatīta. "
+lingo_err_item_no_NBT_tags: "Jūsu priekšmetam nav NBT birkas. "
+lingo_NBT_keys_for_item: "Jūsu priekšmeta NBT atslēgas: "
+lingo_err_NBT_tag_not_exist: "NBT birka ar šādu atslēgu neeksistē. "
+lingo_err_command_only_player: "Šo komandu var izpildīt tikai spēlētājs. "
+lingo_err_have_nothing_hand: "Jūsu rokā nav nekā. "
