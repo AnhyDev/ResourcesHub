@@ -14,154 +14,192 @@ import ink.anh.api.messages.Messenger;
 import ink.anh.api.player.PlayerData;
 import ink.anh.api.utils.LangUtils;
 
+// Class implementing CommandExecutor to handle plugin commands.
 public class ExampleCommand implements CommandExecutor {
 	
-	private ExampleLangPlugin plugin;
+    // Reference to the main plugin instance.
+    private ExampleLangPlugin plugin;
+
+    // Reference to the global manager handling various functionalities.
     private GlobalManager globalManager;
 
+    // Constructor initializing the plugin and global manager.
+    public ExampleCommand(ExampleLangPlugin plugin) {
+        this.plugin = plugin;
+        this.globalManager = plugin.getManager();
+    }
 
-	public ExampleCommand(ExampleLangPlugin plugin) {
-		this.plugin = plugin;
-		this.globalManager = plugin.getManager();
-	}
-
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    // Method to handle command execution.
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        // Check if any arguments were provided with the command.
         if (args.length > 0) {
 
+            // Handle different command arguments.
             switch (args[0].toLowerCase()) {
-            case "reload":
-                return reload(sender);
-            case "set":
-                return setLang(sender, args);
-            case "get":
-                return getLang(sender);
-            case "reset":
-                return resetLang(sender);
-            default:
-                return false;
+                case "reload":
+                    return reload(sender); // Handle 'reload' command.
+                case "set":
+                    return setLang(sender, args); // Handle 'set' command for language.
+                case "get":
+                    return getLang(sender); // Handle 'get' command to retrieve language.
+                case "reset":
+                    return resetLang(sender); // Handle 'reset' command to reset language settings.
+                default:
+                    return false; // Return false if the command is not recognized.
             }
         }
-		return false;
-	}
+        return false; // Return false if no arguments are provided.
+    }
 
+    // Method to handle the 'reload' command.
     private boolean reload(CommandSender sender) {
-    	String[] langs = checkPlayerPermissions(sender, "examplelangplugin.reload");
-	    if (langs != null && langs[0] == null) {
-            return true;
-	    }
-	    
+        // Check player permissions for the 'reload' command.
+        String[] langs = checkPlayerPermissions(sender, "examplelangplugin.reload");
+        if (langs != null && langs[0] == null) {
+            return true; // Permission granted or console command.
+        }
+        
+        // Reload the plugin configuration.
         if (plugin.getManager().reload()) {
+            // Send confirmation message.
             sendMessage(sender, Translator.translateKyeWorld(globalManager, "language_reloaded ", langs), MessageType.NORMAL);
             return true;
         }
-        return false;
+        return false; // Return false if reload fails.
     }
 
+    // Method to handle the 'set' command for setting the language.
     private boolean setLang(CommandSender sender, String[] args) {
+        // Define a custom key for player data.
         String langData = "Lingo";
 
-        // Перевіряємо, чи є викликач команди гравцем
+        // Check if the sender is a player.
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            // Перевірка, чи є достатньо аргументів (мінімум 2)
+
+            // Check if enough arguments are provided.
             if (args.length < 2) {
+                // Send error message for incorrect command format.
                 sendMessage(sender, "err_command_format /example set <lang1> <lang2> ...", MessageType.WARNING);
                 return true;
             }
 
-            // Створюємо масив для зберігання мовних кодів
+            // Create an array to store language codes from the command arguments.
             String[] langs = Arrays.copyOfRange(args, 1, args.length);
 
-            // Отримуємо масив доступних мовних кодів ISO 639-1
+            // Get an array of available ISO 639-1 language codes.
             String[] isoLanguages = Locale.getISOLanguages();
             
+            // Iterate through the provided language codes.
             for (int i = 0; i < langs.length; i++) {
-                String lang = langs[i].toLowerCase(); // Переведення до нижнього регістру
+                // Convert each language code to lowercase.
+                String lang = langs[i].toLowerCase();
 
-                // Перевірка на довжину мовного коду
+                // Check the length of each language code.
                 if (lang.length() != 2) {
+                    // Send error message for incorrect language code length.
                     sendMessage(sender, "err_language_code_2letters ", MessageType.WARNING);
                     return true;
                 }
 
-                // Перевірка, чи є код мови дійсним ISO мовним кодом або спеціальним випадком "ua"
+                // Check if the language code is a valid ISO language code or a special case like "ua".
                 if (!Arrays.asList(isoLanguages).contains(lang)) {
+                    // Send error message for invalid language code.
                     sendMessage(sender, "err_invalid_language_code " + lang, MessageType.WARNING);
                     return true;
                 }
             }
 
-            // Якщо все добре, здійснюємо налаштування мови для гравця
+            // Set the language for the player.
             new PlayerData().setCustomData(player, langData, langs);
+            // Send confirmation message.
             sendMessage(sender, "language_is_selected " + String.join(" ", langs), MessageType.NORMAL);
         }
         return true;
     }
 
+    // Method to handle the 'get' command to retrieve the current language.
     private boolean getLang(CommandSender sender) {
-        // Перевіряємо, чи є викликач команди гравцем
+        // Check if the sender is a player.
         if (sender instanceof Player) {
             Player player = (Player) sender;
-        	String langs;
-        	String langData = "Lingo";
-        	
-        	PlayerData data = new PlayerData();
-        	if (data.hasCustomData(player, langData)) {
-        		langs = data.getStringData(player, langData).replace(',', ' ');
+            String langs;
+            String langData = "Lingo";
+            
+            // Create an instance of PlayerData.
+            PlayerData data = new PlayerData();
+            
+            // Check if the player has custom language data set.
+            if (data.hasCustomData(player, langData)) {
+                // Retrieve the language data.
+                langs = data.getStringData(player, langData).replace(',', ' ');
+                // Send the current language to the player.
                 sendMessage(sender, "you_language " + langs, MessageType.NORMAL);
                 return true;
-        	}
+            }
+            // Send error message if no language is set.
             sendMessage(sender, "you_have_not set_language ", MessageType.WARNING);
             return true;
         }
         return false;
     }
 
+    // Method to handle the 'reset' command to reset language settings.
     private boolean resetLang(CommandSender sender) {
-        // Перевіряємо, чи є викликач команди гравцем
+        // Check if the sender is a player.
         if (sender instanceof Player) {
             Player player = (Player) sender;
-        	String langData = "Lingo";
-        	
-        	PlayerData data = new PlayerData();
-        	if (data.hasCustomData(player, langData)) {
-        		data.removeCustomData(player, langData);
+            String langData = "Lingo";
+            
+            // Create an instance of PlayerData.
+            PlayerData data = new PlayerData();
+            
+            // Check if the player has custom language data.
+            if (data.hasCustomData(player, langData)) {
+                // Remove the custom language data.
+                data.removeCustomData(player, langData);
+                // Send confirmation message.
                 sendMessage(sender, "cleared_the_language ", MessageType.NORMAL);
                 return true;
-        	}
+            }
+            // Send error message if no language is set.
             sendMessage(sender, "you_have_not set_language ", MessageType.WARNING);
             return true;
         }
         return false;
     }
-	
+
+    // Method to check player permissions for executing a command.
     private String[] checkPlayerPermissions(CommandSender sender, String permission) {
-        // Перевірка, чи команду виконує консоль
+        // Check if the command is executed by the console.
         if (sender instanceof ConsoleCommandSender) {
-            return null;
+            return null; // Console has all permissions.
         }
 
-        // Ініціалізація масиву з одним елементом null
+        // Initialize an array with a null element.
         String[] langs = new String[] {null};
 
+        // Check if the sender is a player.
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            // Отримуємо мови для гравця
+            // Get the languages for the player.
             langs = LangUtils.getPlayerLanguage(player);
 
-            // Перевіряємо наявність дозволу у гравця
+            // Check if the player has the required permission.
             if (!player.hasPermission(permission)) {
+                // Send error message for lacking permission.
                 sendMessage(sender, Translator.translateKyeWorld(globalManager, "err_not_have_permission ", langs), MessageType.ERROR);
                 return langs;
             }
         }
 
-        return langs;
+        return langs; // Return the language(s) of the player.
     }
 
-	private void sendMessage(CommandSender sender, String message, MessageType type) {
-    	Messenger.sendMessage(globalManager, sender, message, type);
+    // Method to send a message to the command sender.
+    private void sendMessage(CommandSender sender, String message, MessageType type) {
+        Messenger.sendMessage(globalManager, sender, message, type);
     }
 }

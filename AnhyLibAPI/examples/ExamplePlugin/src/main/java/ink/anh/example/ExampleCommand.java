@@ -14,62 +14,64 @@ import ink.anh.api.messages.Messenger;
 import ink.anh.api.player.PlayerData;
 import ink.anh.api.utils.LangUtils;
 
+// Implements CommandExecutor to handle commands for the plugin.
 public class ExampleCommand implements CommandExecutor {
-	
-	private ExamplePlugin plugin;
+    
+    // Reference to the main plugin instance.
+    private ExamplePlugin plugin;
+
+    // Reference to the global manager.
     private GlobalManager globalManager;
 
+    // Constructor initializing plugin and global manager.
+    public ExampleCommand(ExamplePlugin plugin) {
+        this.plugin = plugin;
+        this.globalManager = plugin.getManager();
+    }
 
-	public ExampleCommand(ExamplePlugin plugin) {
-		this.plugin = plugin;
-		this.globalManager = plugin.getManager();
-	}
-
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    // Handles command execution.
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length > 0) {
-
             switch (args[0].toLowerCase()) {
-            case "reload":
-                return reload(sender);
-            default:
-                return false;
+                case "reload":
+                    return reload(sender); // Handles the 'reload' command.
+                default:
+                    return false; // Returns false if the command is not recognized.
             }
         }
-		return false;
-	}
+        return false; // Returns false if no arguments are provided.
+    }
 
+    // Handles the 'reload' command.
     private boolean reload(CommandSender sender) {
-    	String[] langs = checkPlayerPermissions(sender, "exampleplugin.reload");
-	    if (langs != null && langs[0] == null) {
+        String[] langs = checkPlayerPermissions(sender, "exampleplugin.reload");
+        if (langs != null && langs[0] == null) {
             return true;
-	    }
-	    
+        }
+        
         if (plugin.getManager().reload()) {
-            sendMessage(sender, Translator.translateKyeWorld(globalManager, "language_reloaded ", langs), MessageType.NORMAL);
+            sendMessage(sender, Translator.translateKyeWorld(globalManager, "language_reloaded", langs), MessageType.NORMAL);
             return true;
         }
         return false;
     }
-	
+
+    // Checks if the player has the required permissions to execute the command.
     private String[] checkPlayerPermissions(CommandSender sender, String permission) {
-        // Перевірка, чи команду виконує консоль
         if (sender instanceof ConsoleCommandSender) {
-            return null;
+            return null; // Console can always execute the command.
         }
 
-        // Ініціалізація масиву з одним елементом null
-        String[] langs = new String[] {null};
+        String[] langs = new String[]{null};
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            langs = LangUtils.getPlayerLanguage(player); // Gets the player's language.
 
-            // Отримуємо мови для гравця
-            langs = LangUtils.getPlayerLanguage(player);
-
-            // Перевіряємо наявність дозволу у гравця
             if (!player.hasPermission(permission)) {
-                sendMessage(sender, Translator.translateKyeWorld(globalManager, "err_not_have_permission ", langs), MessageType.ERROR);
+                // Inform the player if they lack the required permission.
+                sendMessage(sender, Translator.translateKyeWorld(globalManager, "err_not_have_permission", langs), MessageType.ERROR);
                 return langs;
             }
         }
@@ -77,7 +79,8 @@ public class ExampleCommand implements CommandExecutor {
         return langs;
     }
 
-	private void sendMessage(CommandSender sender, String message, MessageType type) {
-    	Messenger.sendMessage(globalManager, sender, message, type);
+    // Sends a message to the command sender.
+    private void sendMessage(CommandSender sender, String message, MessageType type) {
+        Messenger.sendMessage(globalManager, sender, message, type);
     }
 }

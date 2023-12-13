@@ -2,23 +2,29 @@ package ink.anh.example;
 
 import ink.anh.api.lingo.lang.LanguageManager;
 
+//Extends LanguageManager to manage language-specific messages.
 public class LangMessage extends LanguageManager {
 
-    private static LangMessage instance = null;
-    private static final Object LOCK = new Object();
+ // Singleton instance of this class.
+ private static LangMessage instance = null;
 
-    private LangMessage(GlobalManager manager) {
-        super(manager, "lang");
-    }
+ // Lock object for thread-safe singleton instantiation.
+ private static final Object LOCK = new Object();
 
-    public static LangMessage getInstance(GlobalManager manager) {
-        if (instance == null) {
-            synchronized (LOCK) {
-                if (instance == null) {
-                    instance = new LangMessage(manager);
-                }
-            }
-        }
-        return instance;
-    }
+ // Private constructor to enforce the singleton pattern.
+ private LangMessage(GlobalManager manager) {
+     super(manager, "lang"); // Calls the constructor of the parent class.
+ }
+
+ // Static method to get the singleton instance of LangMessage.
+ public static LangMessage getInstance(GlobalManager manager) {
+     if (instance == null) {
+         synchronized (LOCK) { // Ensures thread-safe instantiation.
+             if (instance == null) {
+                 instance = new LangMessage(manager);
+             }
+         }
+     }
+     return instance;
+ }
 }
