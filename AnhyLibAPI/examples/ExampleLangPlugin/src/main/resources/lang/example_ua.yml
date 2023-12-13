@@ -1,0 +1,23 @@
+# 1 Загальне
+err_not_have_permission: "Ви не маєте дозволу на використання цієї команди."
+err_not_alloved_config: "Команда не дозволена в налаштуваннях конфігурації."
+err_command_only_player: "Ця команда може виконуватися тільки гравцем."
+err_command_format: "Формат команди: "
+#
+# 2 Завантаження конфігурацій
+err_folder_is_empty: "Папка порожня або сталася помилка при її читанні."
+err_folder_is_notexist: "Папка не існує або це не папка."
+err_reloading_configuration: "Помилка перезавантаження конфігурації."
+created_default_configuration: "Створена конфігурація за замовчуванням."
+configuration_reloaded: "Конфігурацію перезавантажено."
+language_reloaded: "Мовні файли та конфігурацію перезавантажено."
+#
+# 3 Мовні команди
+err_language_code_2letters: "Код мови має складатися з 2 букв. "
+err_invalid_language_code: "Недійсний код мови: "
+you_language: "Список обраних вами мов: "
+you_have_not set_language: "Ви не обрали жодної мови, використовуються налаштування майнкрафту "
+cleared_the_language: "Ви очистили список мов, будуть використовуватися налаштування майнкрафту "
+err_no_item_data_found: "Не знайдено жодних даних для вказаної мови та ключа. "
+keys_for_language: "Ключі для мови "
+language_is_selected: "Ви обрали наступні мови: "

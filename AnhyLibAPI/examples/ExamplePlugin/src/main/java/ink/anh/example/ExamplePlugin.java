@@ -2,13 +2,13 @@ package ink.anh.example;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ExampleLangPlugin extends JavaPlugin {
+public class ExamplePlugin extends JavaPlugin {
 	
-    private static ExampleLangPlugin instance;
+    private static ExamplePlugin instance;
     private GlobalManager manager;
 
 
-    public static ExampleLangPlugin getInstance() {
+    public static ExamplePlugin getInstance() {
         return instance;
     }
 
