@@ -6,9 +6,9 @@
 	</properties>
 
   <groupId>ink.anh</groupId>
-  <artifactId>ExampleOtherPlugin</artifactId>
+  <artifactId>ExamplePlugin</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ExampleOtherPlugin</name>
+  <name>ExamplePlugin</name>
      
     <build>
         <plugins>
