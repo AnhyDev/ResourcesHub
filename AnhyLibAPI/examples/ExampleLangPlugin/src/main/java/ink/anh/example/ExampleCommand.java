@@ -71,7 +71,10 @@ public class ExampleCommand implements CommandExecutor {
 
     // Method to handle the 'set' command for setting the language.
     private boolean setLang(CommandSender sender, String[] args) {
+    	
         // Define a custom key for player data.
+        // If you want to adhere to the standard and enable other plugins using this library to access the languages set by your plugin, 
+        // the variable 'String langData' must be explicitly set to "Lingo".
         String langData = "Lingo";
 
         // Check if the sender is a player.
@@ -125,6 +128,9 @@ public class ExampleCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             String langs;
+
+            // If you want to adhere to the standard and enable other plugins using this library to access the languages set by your plugin, 
+            // the variable 'String langData' must be explicitly set to "Lingo".
             String langData = "Lingo";
             
             // Create an instance of PlayerData.
@@ -150,6 +156,9 @@ public class ExampleCommand implements CommandExecutor {
         // Check if the sender is a player.
         if (sender instanceof Player) {
             Player player = (Player) sender;
+
+            // If you want to adhere to the standard and enable other plugins using this library to access the languages set by your plugin, 
+            // the variable 'String langData' must be explicitly set to "Lingo".
             String langData = "Lingo";
             
             // Create an instance of PlayerData.
