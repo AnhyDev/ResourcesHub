@@ -4,6 +4,10 @@
 
 **AnhyLingo** is a plugin for Minecraft servers designed to create a multilingual interface. It allows players to receive system messages, messages from other plugins, as well as see names and descriptions of items in their chosen language. Tested on servers with `Spigot`, `Paper`, `Purpur` cores version `1.20.2`. The latest version of the `ProtocolLib` plugin is required for operation.
 
+### Important Installation Note for AnhyLingo
+
+To fully leverage the capabilities of AnhyLingo, it is essential to install the [AnhyLibAPI](https://github.com/AnhyDev/ResourcesHub/tree/main/AnhyLibAPI/releases/v1.3.3) library on your server. This integration is a critical component of AnhyLingo, providing the necessary infrastructure for its optimal performance. It's important to note that AnhyLibAPI is designed to be lightweight and efficient, ensuring that it does not impose any additional load on your server's performance. By installing AnhyLibAPI alongside AnhyLingo, you unlock the full potential of both, enhancing your server's functionality without compromising its efficiency.
+
 A common limitation of many Minecraft plugins is their confinement to a single language, as defined in the plugin's configuration. Few plugins offer true multilingual support, often relying solely on the language of the Minecraft client.
 
 **AnhyLingo** stands out in this landscape. It not only utilizes the client's language settings but also empowers players to choose multiple languages in a specified order for finding appropriate translations. Furthermore, **AnhyLingo** makes almost any in-game chat message multilingual by using language keys. These keys are replaced with corresponding translations during the server-to-client packet transmission, ensuring that messages are delivered in the player's chosen language.
