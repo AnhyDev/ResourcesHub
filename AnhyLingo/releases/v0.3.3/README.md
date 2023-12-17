@@ -9,3 +9,7 @@ We are excited to announce the release of AnhyLingo version 0.3.3, which marks a
 3. **Dedicated AnhyLingo API**: An important addition in this version is the introduction of AnhyLingo's own API. This dedicated API provides other developers with the opportunity to use AnhyLingo as a library, allowing for greater flexibility and integration in their plugin development projects.
 
 We believe these updates will greatly enhance the user experience and offer developers more tools and functionalities to explore and utilize in their Minecraft servers. As always, we are committed to improving AnhyLingo and eagerly await feedback from our user community.
+
+### It is important to know that:
+
+**AnhyLibAPI** must be loaded on the server as a plugin. It's crucial to understand that **AnhyLibAPI**, in its role as a plugin, does not monitor any events, have timers, or interact with the world or players, ensuring no additional load on the server's operation and performance. The primary purpose of **AnhyLibAPI** is to provide its API to other plugins, serving as a robust foundation for extending their functionality. This design ensures that **AnhyLibAPI** enhances plugin capabilities without compromising server efficiency.
