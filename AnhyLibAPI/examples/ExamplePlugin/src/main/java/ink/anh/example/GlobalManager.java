@@ -10,7 +10,6 @@ import ink.anh.api.LibraryManager;
 import ink.anh.api.lingo.Translator;
 import ink.anh.api.lingo.lang.LanguageManager;
 import ink.anh.api.messages.Logger;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.md_5.bungee.api.ChatColor;
 
 // Manages global functionalities of the plugin, extending LibraryManager.
@@ -30,9 +29,6 @@ public class GlobalManager extends LibraryManager {
 
     // Default language setting.
     private String defaultLang;
-
-    // Audience instances for sending messages.
-    private static BukkitAudiences bukkitAudiences;
 
     // Flag to enable or disable debug mode.
     private boolean debug;
@@ -65,12 +61,6 @@ public class GlobalManager extends LibraryManager {
         return pluginName;
     }
 
-    // Gets the BukkitAudiences instance.
-    @Override
-    public BukkitAudiences getBukkitAudiences() {
-        return bukkitAudiences;
-    }
-
     // Gets the LanguageManager instance.
     @Override
     public LanguageManager getLanguageManager() {
@@ -91,7 +81,6 @@ public class GlobalManager extends LibraryManager {
 
     // Loads fields from the plugin's configuration.
     private void loadFields(ExamplePlugin plugin) {
-        bukkitAudiences = BukkitAudiences.create(plugin);
         defaultLang = plugin.getConfig().getString("language", "en");
         pluginName = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("plugin_name", "ExamplePlugin"));
         debug = plugin.getConfig().getBoolean("debug", false);
