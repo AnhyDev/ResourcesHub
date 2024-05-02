@@ -1,0 +1,13 @@
+# 1 Generale
+err_not_have_permission: "Non hai il permesso di usare questo comando."
+err_not_alloved_config: "Il comando non è permesso nelle impostazioni di configurazione."
+err_command_only_player: "Questo comando può essere eseguito solo da un giocatore."
+err_command_format: "Formato del comando: "
+#
+# 2 Caricamento configurazioni
+err_folder_is_empty: "La cartella è vuota o si è verificato un errore durante la lettura."
+err_folder_is_notexist: "La cartella non esiste o non è una cartella."
+err_reloading_configuration: "Errore nel ricaricare la configurazione."
+created_default_configuration: "Configurazione predefinita creata."
+configuration_reloaded: "Configurazione ricaricata."
+language_reloaded: "File di lingua e configurazione ricaricati."

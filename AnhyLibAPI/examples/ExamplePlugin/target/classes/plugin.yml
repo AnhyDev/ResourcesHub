@@ -1,0 +1,11 @@
+main: ink.anh.example.ExamplePlugin
+name: ExamplePlugin
+version: 0.0.1
+author: YourNickName
+api-version: 1.13
+depend: [AnhyLibAPI]
+website: http://mysite.com
+commands:
+    example:
+        aliases: [example2]
+        usage: "[ExamplePlugin] TThe command '/example' execution error, please check the arguments' correctness."

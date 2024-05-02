@@ -1,0 +1,13 @@
+# 1 Загальне
+err_not_have_permission: "Ви не маєте дозволу на використання цієї команди."
+err_not_alloved_config: "Команда не дозволена в налаштуваннях конфігурації."
+err_command_only_player: "Ця команда може виконуватися тільки гравцем."
+err_command_format: "Формат команди: "
+#
+# 2 Завантаження конфігурацій
+err_folder_is_empty: "Папка порожня або сталася помилка при її читанні."
+err_folder_is_notexist: "Папка не існує або це не папка."
+err_reloading_configuration: "Помилка перезавантаження конфігурації."
+created_default_configuration: "Створена конфігурація за замовчуванням."
+configuration_reloaded: "Конфігурацію перезавантажено."
+language_reloaded: "Мовні файли та конфігурацію перезавантажено."
