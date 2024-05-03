@@ -1,0 +1,2 @@
+# ExampleAnhyLangPlugin
+Minecraft Plugin ExampleAnhyLangPlugin
