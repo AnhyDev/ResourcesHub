@@ -1,2 +1,0 @@
-# ExampleAnhyPlugin
-Minecraft Plugin ExampleAnhyPlugin
