@@ -1,0 +1,3 @@
+[submodule "AnhyLibAPI/examples/ExamplePlugin"]
+	path = AnhyLibAPI/examples/ExamplePlugin
+	url = https://github.com/AnhyDev/ExampleAnhyPlugin.git
