@@ -1,0 +1,3 @@
+### Plugin Samples in the GitHub Repository
+
+This GitHub repository hosts sample plugins for Minecraft servers that leverage the `AnhyLibAPI` library. These samples are intended for developers who wish to create their own plugins using the features and functionalities of `AnhyLibAPI`. Each sample illustrates key techniques and practices for effectively integrating and utilizing various components of `AnhyLibAPI` in their projects. These samples are an excellent resource for learning and experimentation, allowing developers to quickly start working with advanced plugin development techniques for Minecraft.
