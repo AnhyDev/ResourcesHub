@@ -1,6 +1,3 @@
-[submodule "AnhyLibAPI/examples/ExamplePlugin/ExamplePlugin"]
-	path = AnhyLibAPI/examples/ExamplePlugin/ExamplePlugin
-	url = https://github.com/AnhyDev/ExampleAnhyPlugin.git
 [submodule "AnhyLibAPI/examples/ExampleLangPlugin/ExampleLangPlugin"]
 	path = AnhyLibAPI/examples/ExampleLangPlugin/ExampleLangPlugin
 	url = https://github.com/AnhyDev/ExampleAnhyLangPlugin
