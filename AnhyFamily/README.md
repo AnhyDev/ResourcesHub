@@ -1,59 +1,57 @@
-# AnhyFamily Плагін
+# AnhyFamily Plugin
 
-### Загальний Опис Плагіна AnhyFamily
+### General Description of the AnhyFamily Plugin
 
-**AnhyFamily** безсумнівно вартий уваги. Цей плагін значно розширює можливості соціальної взаємодії в Minecraft, додаючи нові шари до ігрового процесу. Його багатофункціональність, налаштовуваність та інтерактивність роблять його привабливим як для гравців, так і для адміністраторів серверів. 
+**AnhyFamily** is undoubtedly worth attention. This plugin significantly enhances social interaction possibilities in Minecraft, adding new layers to the gameplay. Its multifunctionality, customizability, and interactivity make it appealing to both players and server administrators.
 
-Переваги:
-- **Збагачений ігровий досвід**: Створення сімей, одруження, усиновлення та інші соціальні функції роблять гру більш захоплюючою та реалістичною.
-- **Гнучкі налаштування**: Можливість налаштовувати імена, прізвища, гендерні опції та сімейні префікси надає гравцям свободу створювати унікальні сімейні одиниці.
-- **Зручні інструменти для взаємодії**: Сімейний чат, хом, скриня та обіймання полегшують спілкування та співпрацю між членами сім'ї.
-- **Інтерактивні команди**: Інтерактивні команди та повідомлення роблять плагін інтуїтивно зрозумілим та простим у використанні.
+Advantages:
+- **Enriched Gaming Experience**: Creating families, getting married, adopting, and other social functions make the game more engaging and realistic.
+- **Flexible Settings**: The ability to customize names, surnames, gender options, and family prefixes gives players the freedom to create unique family units.
+- **Convenient Interaction Tools**: Family chat, home, chest, and hugging features facilitate communication and collaboration among family members.
+- **Interactive Commands**: Interactive commands and messages make the plugin intuitive and easy to use.
 
-Враховуючи всі ці можливості, AnhyFamily є чудовим доповненням до будь-якого Minecraft-сервера, що прагне додати глибину та реалізм у соціальну взаємодію гравців.
+Considering all these features, AnhyFamily is a great addition to any Minecraft server looking to add depth and realism to players' social interactions.
 
-#### Основні Функції Плагіна:
+#### Main Features of the Plugin:
 
-1. **[Команди та Керування](commands.md)**:
-    - Плагін містить різноманітні команди для налаштування та керування сімейними взаємодіями, включаючи зміну статі, налаштування імен та прізвищ, а також адміністративні команди для модерації сімейних зв'язків.
+1. **Commands and Management**
+    - The plugin includes various commands for setting up and managing family interactions, including changing gender, setting names and surnames, as well as administrative commands for moderating family relationships.
 
-2. **[Стать Гравця](gender.md)**:
-    - Гравці можуть обирати свою стать, включаючи можливість вибору небінарної статі. Ця інформація використовується для налаштування префіксів, сімейних відносин та інших аспектів гри.
+2. **Player Gender**
+    - Players can choose their gender, including a non-binary option. This information is used to customize prefixes, family relationships, and other aspects of the game.
 
-3. **[Ім'я та Прізвище](names.md)**:
-    - Гравці можуть встановлювати собі ім'я та прізвище, які відображаються у профілі та сімейному дереві. Імена та прізвища мають певні обмеження щодо довжини та символів.
+3. **Name and Surname**
+    - Players can set their name and surname, which are displayed in the profile and family tree. Names and surnames have certain length and character restrictions.
 
-4. **[Одруження](marry.md)**:
-    - Плагін підтримує як публічні, так і приватні церемонії одруження з можливістю налаштування обмежень щодо статі. Після одруження створюється сімейний об'єкт, що включає спільну інформацію та ресурси.
+4. **Marriage**
+    - The plugin supports both public and private marriage ceremonies with customizable gender restrictions. After marriage, a family entity is created, including shared information and resources.
 
-5. **[Усиновлення](adopt.md)**:
-    - Гравці можуть усиновлювати інших гравців, створюючи нові родинні зв'язки. Усиновлення може включати як гравців зі своїми сім'ями, так і тих, хто не має сім'ї.
+5. **Adoption**
+    - Players can adopt other players, creating new family bonds. Adoption can include both players with their own families and those without.
 
-6. **[Розірвання Родинних Стосунків](separate.md)**:
-    - Плагін дозволяє розірвати родинні стосунки за допомогою команд, включаючи розлучення та розрив відносин з окремими членами родини.
+6. **Breaking Family Relationships**
+    - The plugin allows breaking family relationships through commands, including divorce and separating relationships with individual family members.
 
-7. **[Інформаційний Блок](info.md)**:
-    - Гравці можуть переглядати профілі інших гравців та їхні сімейні дерева. Інформація надається у інтерактивному форматі з можливістю переходу до деталей кожного члена родини.
+7. **Information Block**
+    - Players can view profiles of other players and their family trees. Information is provided in an interactive format with the ability to view details of each family member.
 
-8. **[Сімейний Префікс](prefix.md)**:
-    - Сім'ї можуть мати унікальний префікс, який використовується у сімейному чаті та інших інтеракціях. Префікс можна один раз змінити на власний варіант.
+8. **Family Prefix**
+    - Families can have a unique prefix used in family chat and other interactions. The prefix can be changed once to a custom option.
 
-9. **[Сімейний Чат](chat.md)**:
-    - Плагін забезпечує приватний чат для сімей, доступ до якого можна налаштовувати для окремих членів родини. Команди для керування доступом та відправки повідомлень у чат доступні для подружжя.
+9. **Family Chat**
+    - The plugin provides a private chat for families, which can be customized for individual family members. Commands for managing access and sending messages in the chat are available for spouses.
 
-10. **[Сімейний Хом](home.md)**:
-    - Сімейний хом – це локація, до якої можуть телепортуватися члени сім'ї. Точку хому можна налаштовувати та змінювати з певними обмеженнями.
+10. **Family Home**
+    - The family home is a location to which family members can teleport. The home point can be set and changed with certain restrictions.
 
-11. **[Сімейна Скриня](chest.md)**:
-    - Сімейна скриня – це віртуальна скриня для спільного зберігання речей. Доступ до скрині можна налаштовувати, а відкрити її можна як командою, так і кліком.
+11. **Family Chest**
+    - The family chest is a virtual chest for shared item storage. Access to the chest can be customized and it can be opened either by command or by clicking.
 
-12. **[Обнімашки](hugs.md)**:
-    - Плагін дозволяє обіймати інших гравців за умови наявності відповідних дозволів. Доступ до обіймів можна налаштовувати як для членів родини, так і для інших гравців.
+12. **Hugs**
+    - The plugin allows hugging other players if the appropriate permissions are set. Access to hugs can be customized for both family members and other players.
 
-13. **[Конфігураційний Файл](config.md)**:
-    - Конфігураційний файл плагіна дозволяє налаштувати різні аспекти, включаючи базу даних, ціни, гендерні параметри, налаштування церемоній, сімейного хому та скрині, а також обмеження для імен та прізвищ.
+13. **Configuration File**
+    - The plugin's configuration file allows for customizing various aspects, including database settings, prices, gender parameters, ceremony settings, family home and chest settings, and name and surname restrictions.
 
-14. **[Плейсхолдери](placeholders.md)**:
-    - Плагін надає різноманітні плейсхолдери для використання з PlaceholderAPI, що дозволяє використовувати інформацію про гравців та їхні сім'ї у різних контекстах гри.
-
-[Наступна сторінка: Команди >>>](commands.md)
+14. **Placeholders**
+    - The plugin provides various placeholders for use with PlaceholderAPI, allowing the use of player and family information in different game contexts.
