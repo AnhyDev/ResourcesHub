@@ -30,10 +30,10 @@ gender:
 ```
 
 #### Адміністративні команди
-- **/anhyfam forcegender <PlayerName> <gender>**  
+- **/anhyfam forcegender `<PlayerName>` `<gender>`**  
   Примусова зміна статі гравця. Команда доступна лише з консолі.
 
-- **/anhyfam genderreset <PlayerName>**  
+- **/anhyfam genderreset `<PlayerName>`**  
   Скидання статі гравця на "невизначився". Команда доступна лише з консолі.
 
 #### Інтеграція з іншими плагінами

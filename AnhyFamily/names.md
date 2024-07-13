@@ -4,13 +4,13 @@
 
 #### Встановлення Імені та Прізвища
 
-- **/family firstname <Firstname>**  
+- **/family firstname `<Firstname>`**  
   Вибір імені гравця. Максимальна довжина імені - 12 символів. Наприклад:
   ```
   /family firstname Джон
   ```
 
-- **/family surname <Surname male version[/Surname female version]>**  
+- **/family surname `<Surname male version[/Surname female version]>`**  
   Вибір прізвища гравця. Якщо чоловіча та жіноча версія прізвища відрізняються, вони вказуються через слеш. Наприклад:
   ```
   /family surname Зеленський/Зеленська
@@ -25,20 +25,20 @@
 
 Команди для примусового встановлення імені та прізвища, доступні лише з консолі:
 
-- **/anhyfam forcefirstname <PlayerName> <Firstname>**  
+- **/anhyfam forcefirstname `<PlayerName>` `<Firstname>`**  
   Примусове встановлення імені гравця.
 
-- **/anhyfam forcesurname <PlayerName> <Surname male version[/Surname female version]>**  
+- **/anhyfam forcesurname `<PlayerName>` `<Surname male version[/Surname female version]>`**  
   Примусове встановлення прізвища гравця.
 
 #### Команди для Священників
 
 Гравці з правами "family.pastor" можуть пропонувати зміну імені чи прізвища іншим гравцям:
 
-- **/family suggestfirstname <PlayerName> <Firstname>**  
+- **/family suggestfirstname `<PlayerName>` `<Firstname>`**  
   Пропозиція зміни імені.
 
-- **/family suggestlastname <PlayerName> <Surname male version[/Surname female version]>**  
+- **/family suggestlastname `<PlayerName>` `<Surname male version[/Surname female version]>`**  
   Пропозиція зміни прізвища.
 
 Гравець може прийняти пропозицію командою:
